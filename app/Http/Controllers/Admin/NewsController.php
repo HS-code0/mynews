@@ -11,22 +11,22 @@ class NewsController extends Controller
     //
     public function add()
     {
-        return view('admin.news.create');
+        returnview('admin.news.create');
     }
     
-    public function create(Request $request)
+    public function create(Request$request)
     {
         // Varidationを行う
-      $this->validate($request, News::$rules);
+      $this->validate($request,News::$rules);
 ​
-      $news = new News;
-      $form = $request->all();
+      $news=new News;
+      $form=$request->all();
 ​
       // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
       if (isset($form['image'])) {
-        $path = $request->file('image')->store('public/image');
-        $news->image_path = basename($path);
-      } else {
+        $path=$request->file('image')->store('public/image');
+        $news->image_path=basename($path);
+      }else{
           $news->image_path = null;
       }
 ​
