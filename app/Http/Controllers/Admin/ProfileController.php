@@ -8,7 +8,7 @@ use App\Profile;
 
 class ProfileController extends Controller
 {
-    public function add()
+    public function add(Request $request)
     {
         return view('admin.profile.create');
     }
@@ -42,7 +42,7 @@ class ProfileController extends Controller
     {
         $profile = Profile::find($request->id);
 
-      return view('admin.news.edit', ['profile_form' => $news]);
+      return view('admin.profile.edit', ['profile_form' => $profile]);
  
     }
     
@@ -59,7 +59,7 @@ class ProfileController extends Controller
       // 該当するデータを上書きして保存する
       $news->fill($profile_form)->save();
 
-      return redirect('admin/profile/');
+      return redirect('admin/profile');
   }
 }
 ?>
